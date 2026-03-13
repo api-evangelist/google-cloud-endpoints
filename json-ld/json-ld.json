@@ -1,0 +1,21 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "gcp": "https://cloud.google.com/endpoints/docs/reference/rest/v1/",
+    "ManagedService": "gcp:services",
+    "ServiceConfig": "gcp:services.configs",
+    "Rollout": "gcp:services.rollouts",
+    "serviceName": "schema:name",
+    "title": "schema:name",
+    "description": "schema:description",
+    "producerProjectId": "schema:identifier",
+    "status": "schema:status",
+    "createTime": "schema:dateCreated",
+    "createdBy": "schema:creator",
+    "rolloutId": "schema:identifier",
+    "documentation": {
+      "@id": "schema:documentation",
+      "@type": "@id"
+    }
+  }
+}

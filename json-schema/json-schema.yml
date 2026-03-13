@@ -1,0 +1,84 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://raw.githubusercontent.com/api-evangelist/google-cloud-endpoints/refs/heads/main/json-schema/json-schema.yml
+title: Google Cloud Endpoints Schema
+description: JSON Schema for Google Cloud Endpoints Service Management API resources.
+type: object
+$defs:
+  ManagedService:
+    type: object
+    title: Managed Service
+    description: A managed service registered with Cloud Endpoints.
+    properties:
+      serviceName:
+        type: string
+        description: The DNS-compatible name of the managed service.
+      producerProjectId:
+        type: string
+        description: The Google Cloud project ID that owns the service.
+    required:
+      - serviceName
+      - producerProjectId
+  ServiceConfig:
+    type: object
+    title: Service Configuration
+    description: A version of the service configuration for a managed service.
+    properties:
+      name:
+        type: string
+        description: The service name.
+      title:
+        type: string
+        description: The product title of the service.
+      producerProjectId:
+        type: string
+        description: The project that produces the service.
+      id:
+        type: string
+        description: A unique configuration ID.
+      apis:
+        type: array
+        description: A list of API interfaces exported by the service.
+        items:
+          type: object
+          properties:
+            name:
+              type: string
+            version:
+              type: string
+      documentation:
+        type: object
+        description: Additional API documentation.
+        properties:
+          summary:
+            type: string
+    required:
+      - name
+  Rollout:
+    type: object
+    title: Rollout
+    description: A service configuration rollout.
+    properties:
+      rolloutId:
+        type: string
+        description: The unique rollout identifier.
+      createTime:
+        type: string
+        format: date-time
+        description: The time when the rollout was created.
+      createdBy:
+        type: string
+        description: The user who created the rollout.
+      status:
+        type: string
+        description: The current status of the rollout.
+        enum:
+          - ROLLOUT_STATUS_UNSPECIFIED
+          - IN_PROGRESS
+          - SUCCESS
+          - CANCELLED
+          - FAILED
+      serviceName:
+        type: string
+        description: The name of the service.
+    required:
+      - serviceName

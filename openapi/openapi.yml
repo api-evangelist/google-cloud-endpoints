@@ -1,0 +1,297 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Service Management API
+  description: >-
+    The Service Management API allows management of managed services used by
+    Google Cloud Endpoints. It enables creating, configuring, and deploying API
+    service configurations and managing service rollouts.
+  version: v1
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/endpoints/docs
+servers:
+  - url: https://servicemanagement.googleapis.com
+paths:
+  /v1/services:
+    get:
+      operationId: listServices
+      summary: List managed services
+      description: Lists managed services for the authenticated project.
+      parameters:
+        - name: producerProjectId
+          in: query
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListServicesResponse'
+    post:
+      operationId: createService
+      summary: Create a managed service
+      description: Creates a new managed service.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManagedService'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /v1/services/{serviceName}:
+    get:
+      operationId: getService
+      summary: Get a managed service
+      description: Gets the configuration of a managed service.
+      parameters:
+        - name: serviceName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ManagedService'
+    delete:
+      operationId: deleteService
+      summary: Delete a managed service
+      description: Deletes a managed service.
+      parameters:
+        - name: serviceName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /v1/services/{serviceName}/configs:
+    get:
+      operationId: listServiceConfigs
+      summary: List service configurations
+      description: Lists the history of service configurations for a managed service.
+      parameters:
+        - name: serviceName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListServiceConfigsResponse'
+    post:
+      operationId: createServiceConfig
+      summary: Create a service configuration
+      description: Creates a new service configuration for a managed service.
+      parameters:
+        - name: serviceName
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceConfig'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceConfig'
+  /v1/services/{serviceName}/rollouts:
+    get:
+      operationId: listServiceRollouts
+      summary: List service rollouts
+      description: Lists rollout history for a managed service.
+      parameters:
+        - name: serviceName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListServiceRolloutsResponse'
+    post:
+      operationId: createServiceRollout
+      summary: Create a service rollout
+      description: Creates a new service rollout for a managed service.
+      parameters:
+        - name: serviceName
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Rollout'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+components:
+  schemas:
+    ManagedService:
+      type: object
+      properties:
+        serviceName:
+          type: string
+          description: The name of the service.
+        producerProjectId:
+          type: string
+          description: The Google Cloud project that owns the service.
+    ServiceConfig:
+      type: object
+      properties:
+        name:
+          type: string
+        title:
+          type: string
+        producerProjectId:
+          type: string
+        id:
+          type: string
+        apis:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              version:
+                type: string
+        documentation:
+          type: object
+          properties:
+            summary:
+              type: string
+        quota:
+          type: object
+          properties:
+            limits:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  metric:
+                    type: string
+                  defaultLimit:
+                    type: integer
+        usage:
+          type: object
+          properties:
+            requirements:
+              type: array
+              items:
+                type: string
+    Rollout:
+      type: object
+      properties:
+        rolloutId:
+          type: string
+        createTime:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+        status:
+          type: string
+          enum:
+            - ROLLOUT_STATUS_UNSPECIFIED
+            - IN_PROGRESS
+            - SUCCESS
+            - CANCELLED
+            - FAILED
+        serviceName:
+          type: string
+        trafficPercentStrategy:
+          type: object
+          properties:
+            percentages:
+              type: object
+              additionalProperties:
+                type: number
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
+        metadata:
+          type: object
+        response:
+          type: object
+        error:
+          type: object
+    ListServicesResponse:
+      type: object
+      properties:
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagedService'
+        nextPageToken:
+          type: string
+    ListServiceConfigsResponse:
+      type: object
+      properties:
+        serviceConfigs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceConfig'
+        nextPageToken:
+          type: string
+    ListServiceRolloutsResponse:
+      type: object
+      properties:
+        rollouts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rollout'
+        nextPageToken:
+          type: string
