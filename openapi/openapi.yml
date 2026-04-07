@@ -37,6 +37,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListServicesResponse'
+      tags:
+        - Services
     post:
       operationId: createService
       summary: Google Cloud Endpoints Create a managed service
@@ -54,6 +56,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Operation'
+      tags:
+        - Services
   /v1/services/{serviceName}:
     get:
       operationId: getService
@@ -72,6 +76,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ManagedService'
+      tags:
+        - Services
     delete:
       operationId: deleteService
       summary: Google Cloud Endpoints Delete a managed service
@@ -89,6 +95,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Operation'
+      tags:
+        - Services
   /v1/services/{serviceName}/configs:
     get:
       operationId: listServiceConfigs
@@ -107,6 +115,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListServiceConfigsResponse'
+      tags:
+        - Services
     post:
       operationId: createServiceConfig
       summary: Google Cloud Endpoints Create a service configuration
@@ -130,6 +140,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ServiceConfig'
+      tags:
+        - Services
   /v1/services/{serviceName}/rollouts:
     get:
       operationId: listServiceRollouts
@@ -148,6 +160,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListServiceRolloutsResponse'
+      tags:
+        - Services
     post:
       operationId: createServiceRollout
       summary: Google Cloud Endpoints Create a service rollout
@@ -171,6 +185,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Operation'
+      tags:
+        - Services
 components:
   schemas:
     ManagedService:
@@ -295,3 +311,5 @@ components:
             $ref: '#/components/schemas/Rollout'
         nextPageToken:
           type: string
+tags:
+  - name: Services

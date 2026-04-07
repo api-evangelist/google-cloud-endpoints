@@ -15,12 +15,12 @@ modified: '2026-03-16'
 specificationVersion: '0.19'
 type: Index
 tags:
-  - API Management
   - API Gateway
+  - API Management
   - Authentication
+  - Google Cloud
   - Monitoring
   - Rate Limiting
-  - Google Cloud
 apis:
   - name: Google Cloud Service Management API
     description: >-
@@ -42,8 +42,8 @@ apis:
         url: json-schema/json-schema.yml
     tags:
       - API Management
-      - Service Management
       - Endpoints
+      - Service Management
 common:
   - type: Portal
     url: https://cloud.google.com/endpoints
