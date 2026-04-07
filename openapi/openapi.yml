@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Google Cloud Service Management API
+  title: Google Cloud Endpoints Google Cloud Service Management API
   description: >-
     The Service Management API allows management of managed services used by
     Google Cloud Endpoints. It enables creating, configuring, and deploying API
@@ -15,7 +15,7 @@ paths:
   /v1/services:
     get:
       operationId: listServices
-      summary: List managed services
+      summary: Google Cloud Endpoints List managed services
       description: Lists managed services for the authenticated project.
       parameters:
         - name: producerProjectId
@@ -39,7 +39,7 @@ paths:
                 $ref: '#/components/schemas/ListServicesResponse'
     post:
       operationId: createService
-      summary: Create a managed service
+      summary: Google Cloud Endpoints Create a managed service
       description: Creates a new managed service.
       requestBody:
         required: true
@@ -57,7 +57,7 @@ paths:
   /v1/services/{serviceName}:
     get:
       operationId: getService
-      summary: Get a managed service
+      summary: Google Cloud Endpoints Get a managed service
       description: Gets the configuration of a managed service.
       parameters:
         - name: serviceName
@@ -74,7 +74,7 @@ paths:
                 $ref: '#/components/schemas/ManagedService'
     delete:
       operationId: deleteService
-      summary: Delete a managed service
+      summary: Google Cloud Endpoints Delete a managed service
       description: Deletes a managed service.
       parameters:
         - name: serviceName
@@ -92,7 +92,7 @@ paths:
   /v1/services/{serviceName}/configs:
     get:
       operationId: listServiceConfigs
-      summary: List service configurations
+      summary: Google Cloud Endpoints List service configurations
       description: Lists the history of service configurations for a managed service.
       parameters:
         - name: serviceName
@@ -109,7 +109,7 @@ paths:
                 $ref: '#/components/schemas/ListServiceConfigsResponse'
     post:
       operationId: createServiceConfig
-      summary: Create a service configuration
+      summary: Google Cloud Endpoints Create a service configuration
       description: Creates a new service configuration for a managed service.
       parameters:
         - name: serviceName
@@ -133,7 +133,7 @@ paths:
   /v1/services/{serviceName}/rollouts:
     get:
       operationId: listServiceRollouts
-      summary: List service rollouts
+      summary: Google Cloud Endpoints List service rollouts
       description: Lists rollout history for a managed service.
       parameters:
         - name: serviceName
@@ -150,7 +150,7 @@ paths:
                 $ref: '#/components/schemas/ListServiceRolloutsResponse'
     post:
       operationId: createServiceRollout
-      summary: Create a service rollout
+      summary: Google Cloud Endpoints Create a service rollout
       description: Creates a new service rollout for a managed service.
       parameters:
         - name: serviceName
