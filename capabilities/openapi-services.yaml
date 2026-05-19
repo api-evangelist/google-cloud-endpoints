@@ -1,21 +1,25 @@
 naftiko: 1.0.0-alpha2
 info:
-  label: Google Cloud Endpoints Google Cloud Service Management API
-  description: The Service Management API allows management of managed services used by Google Cloud Endpoints. It enables
-    creating, configuring, and deploying API service configurations and managing service rollouts.
+  label: Google Cloud Endpoints Google Cloud Service Management API — Services
+  description: 'Google Cloud Endpoints Google Cloud Service Management API — Services. 8 operations. Lead operation: Google
+    Cloud Endpoints List managed services. Self-contained Naftiko capability covering one Google Cloud Endpoints business
+    surface.'
   tags:
-  - Google
-  - Cloud
-  - Endpoints
-  - API
-  created: '2026-05-06'
-  modified: '2026-05-06'
+  - Google Cloud Endpoints
+  - Services
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CLOUD_ENDPOINTS_API_KEY: GOOGLE_CLOUD_ENDPOINTS_API_KEY
 capability:
   consumes:
   - type: http
-    namespace: google-cloud-endpoints
+    namespace: openapi-services
     baseUri: https://servicemanagement.googleapis.com
-    description: Google Cloud Endpoints Google Cloud Service Management API HTTP API.
+    description: Google Cloud Endpoints Google Cloud Service Management API — Services business capability. Self-contained,
+      no shared references.
     resources:
     - name: v1-services
       path: /v1/services
@@ -23,6 +27,11 @@ capability:
       - name: listservices
         method: GET
         description: Google Cloud Endpoints List managed services
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
         inputParameters:
         - name: producerProjectId
           in: query
@@ -33,11 +42,6 @@ capability:
         - name: pageToken
           in: query
           type: string
-        outputRawFormat: json
-        outputParameters:
-        - name: result
-          type: object
-          value: $.
       - name: createservice
         method: POST
         description: Google Cloud Endpoints Create a managed service
@@ -46,330 +50,312 @@ capability:
         - name: result
           type: object
           value: $.
-    - name: v1-services-servicename
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-services-serviceName
       path: /v1/services/{serviceName}
       operations:
       - name: getservice
         method: GET
         description: Google Cloud Endpoints Get a managed service
-        inputParameters:
-        - name: serviceName
-          in: path
-          type: string
-          required: true
         outputRawFormat: json
         outputParameters:
         - name: result
           type: object
           value: $.
+        inputParameters:
+        - name: serviceName
+          in: path
+          type: string
+          required: true
       - name: deleteservice
         method: DELETE
         description: Google Cloud Endpoints Delete a managed service
-        inputParameters:
-        - name: serviceName
-          in: path
-          type: string
-          required: true
         outputRawFormat: json
         outputParameters:
         - name: result
           type: object
           value: $.
-    - name: v1-services-servicename-configs
+        inputParameters:
+        - name: serviceName
+          in: path
+          type: string
+          required: true
+    - name: v1-services-serviceName-configs
       path: /v1/services/{serviceName}/configs
       operations:
       - name: listserviceconfigs
         method: GET
         description: Google Cloud Endpoints List service configurations
-        inputParameters:
-        - name: serviceName
-          in: path
-          type: string
-          required: true
         outputRawFormat: json
         outputParameters:
         - name: result
           type: object
           value: $.
+        inputParameters:
+        - name: serviceName
+          in: path
+          type: string
+          required: true
       - name: createserviceconfig
         method: POST
         description: Google Cloud Endpoints Create a service configuration
-        inputParameters:
-        - name: serviceName
-          in: path
-          type: string
-          required: true
         outputRawFormat: json
         outputParameters:
         - name: result
           type: object
           value: $.
-    - name: v1-services-servicename-rollouts
+        inputParameters:
+        - name: serviceName
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-services-serviceName-rollouts
       path: /v1/services/{serviceName}/rollouts
       operations:
       - name: listservicerollouts
         method: GET
         description: Google Cloud Endpoints List service rollouts
-        inputParameters:
-        - name: serviceName
-          in: path
-          type: string
-          required: true
         outputRawFormat: json
         outputParameters:
         - name: result
           type: object
           value: $.
+        inputParameters:
+        - name: serviceName
+          in: path
+          type: string
+          required: true
       - name: createservicerollout
         method: POST
         description: Google Cloud Endpoints Create a service rollout
-        inputParameters:
-        - name: serviceName
-          in: path
-          type: string
-          required: true
         outputRawFormat: json
         outputParameters:
         - name: result
           type: object
           value: $.
+        inputParameters:
+        - name: serviceName
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
   exposes:
   - type: rest
+    namespace: openapi-services-rest
     port: 8080
-    namespace: google-cloud-endpoints-rest
-    description: REST adapter for Google Cloud Endpoints Google Cloud Service Management API.
+    description: REST adapter for Google Cloud Endpoints Google Cloud Service Management API — Services. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
     resources:
-    - path: /v1/services
-      name: listservices
+    - path: /v1/v1/services
+      name: v1-services
+      description: REST surface for v1-services.
       operations:
       - method: GET
         name: listservices
         description: Google Cloud Endpoints List managed services
-        call: google-cloud-endpoints.listservices
+        call: openapi-services.listservices
+        with:
+          producerProjectId: rest.producerProjectId
+          pageSize: rest.pageSize
+          pageToken: rest.pageToken
         outputParameters:
         - type: object
           mapping: $.
-    - path: /v1/services
-      name: createservice
-      operations:
       - method: POST
         name: createservice
         description: Google Cloud Endpoints Create a managed service
-        call: google-cloud-endpoints.createservice
+        call: openapi-services.createservice
+        with:
+          body: rest.body
         outputParameters:
         - type: object
           mapping: $.
-    - path: /v1/services/{serviceName}
-      name: getservice
+    - path: /v1/v1/services/{servicename}
+      name: v1-services-servicename
+      description: REST surface for v1-services-serviceName.
       operations:
       - method: GET
         name: getservice
         description: Google Cloud Endpoints Get a managed service
-        call: google-cloud-endpoints.getservice
+        call: openapi-services.getservice
         with:
           serviceName: rest.serviceName
         outputParameters:
         - type: object
           mapping: $.
-    - path: /v1/services/{serviceName}
-      name: deleteservice
-      operations:
       - method: DELETE
         name: deleteservice
         description: Google Cloud Endpoints Delete a managed service
-        call: google-cloud-endpoints.deleteservice
+        call: openapi-services.deleteservice
         with:
           serviceName: rest.serviceName
         outputParameters:
         - type: object
           mapping: $.
-    - path: /v1/services/{serviceName}/configs
-      name: listserviceconfigs
+    - path: /v1/v1/services/{servicename}/configs
+      name: v1-services-servicename-configs
+      description: REST surface for v1-services-serviceName-configs.
       operations:
       - method: GET
         name: listserviceconfigs
         description: Google Cloud Endpoints List service configurations
-        call: google-cloud-endpoints.listserviceconfigs
+        call: openapi-services.listserviceconfigs
         with:
           serviceName: rest.serviceName
         outputParameters:
         - type: object
           mapping: $.
-    - path: /v1/services/{serviceName}/configs
-      name: createserviceconfig
-      operations:
       - method: POST
         name: createserviceconfig
         description: Google Cloud Endpoints Create a service configuration
-        call: google-cloud-endpoints.createserviceconfig
+        call: openapi-services.createserviceconfig
         with:
           serviceName: rest.serviceName
+          body: rest.body
         outputParameters:
         - type: object
           mapping: $.
-    - path: /v1/services/{serviceName}/rollouts
-      name: listservicerollouts
+    - path: /v1/v1/services/{servicename}/rollouts
+      name: v1-services-servicename-rollouts
+      description: REST surface for v1-services-serviceName-rollouts.
       operations:
       - method: GET
         name: listservicerollouts
         description: Google Cloud Endpoints List service rollouts
-        call: google-cloud-endpoints.listservicerollouts
+        call: openapi-services.listservicerollouts
         with:
           serviceName: rest.serviceName
         outputParameters:
         - type: object
           mapping: $.
-    - path: /v1/services/{serviceName}/rollouts
-      name: createservicerollout
-      operations:
       - method: POST
         name: createservicerollout
         description: Google Cloud Endpoints Create a service rollout
-        call: google-cloud-endpoints.createservicerollout
+        call: openapi-services.createservicerollout
         with:
           serviceName: rest.serviceName
+          body: rest.body
         outputParameters:
         - type: object
           mapping: $.
   - type: mcp
+    namespace: openapi-services-mcp
     port: 9090
-    namespace: google-cloud-endpoints-mcp
     transport: http
-    description: MCP adapter for Google Cloud Endpoints Google Cloud Service Management API for AI agent use.
+    description: MCP adapter for Google Cloud Endpoints Google Cloud Service Management API — Services. One tool per consumed
+      operation, routed inline through this capability's consumes block.
     tools:
-    - name: listservices
+    - name: google-cloud-endpoints-list-managed
       description: Google Cloud Endpoints List managed services
       hints:
         readOnly: true
         destructive: false
         idempotent: true
-      call: google-cloud-endpoints.listservices
+      call: openapi-services.listservices
       with:
         producerProjectId: tools.producerProjectId
         pageSize: tools.pageSize
         pageToken: tools.pageToken
-      inputParameters:
-      - name: producerProjectId
-        type: string
-        description: producerProjectId
-      - name: pageSize
-        type: integer
-        description: pageSize
-      - name: pageToken
-        type: string
-        description: pageToken
       outputParameters:
       - type: object
         mapping: $.
-    - name: createservice
+    - name: google-cloud-endpoints-create-managed
       description: Google Cloud Endpoints Create a managed service
       hints:
         readOnly: false
         destructive: false
         idempotent: false
-      call: google-cloud-endpoints.createservice
+      call: openapi-services.createservice
+      with:
+        body: tools.body
       outputParameters:
       - type: object
         mapping: $.
-    - name: getservice
+    - name: google-cloud-endpoints-get-managed
       description: Google Cloud Endpoints Get a managed service
       hints:
         readOnly: true
         destructive: false
         idempotent: true
-      call: google-cloud-endpoints.getservice
+      call: openapi-services.getservice
       with:
         serviceName: tools.serviceName
-      inputParameters:
-      - name: serviceName
-        type: string
-        description: serviceName
-        required: true
       outputParameters:
       - type: object
         mapping: $.
-    - name: deleteservice
+    - name: google-cloud-endpoints-delete-managed
       description: Google Cloud Endpoints Delete a managed service
       hints:
         readOnly: false
         destructive: true
         idempotent: true
-      call: google-cloud-endpoints.deleteservice
+      call: openapi-services.deleteservice
       with:
         serviceName: tools.serviceName
-      inputParameters:
-      - name: serviceName
-        type: string
-        description: serviceName
-        required: true
       outputParameters:
       - type: object
         mapping: $.
-    - name: listserviceconfigs
+    - name: google-cloud-endpoints-list-service
       description: Google Cloud Endpoints List service configurations
       hints:
         readOnly: true
         destructive: false
         idempotent: true
-      call: google-cloud-endpoints.listserviceconfigs
+      call: openapi-services.listserviceconfigs
       with:
         serviceName: tools.serviceName
-      inputParameters:
-      - name: serviceName
-        type: string
-        description: serviceName
-        required: true
       outputParameters:
       - type: object
         mapping: $.
-    - name: createserviceconfig
+    - name: google-cloud-endpoints-create-service
       description: Google Cloud Endpoints Create a service configuration
       hints:
         readOnly: false
         destructive: false
         idempotent: false
-      call: google-cloud-endpoints.createserviceconfig
+      call: openapi-services.createserviceconfig
       with:
         serviceName: tools.serviceName
-      inputParameters:
-      - name: serviceName
-        type: string
-        description: serviceName
-        required: true
+        body: tools.body
       outputParameters:
       - type: object
         mapping: $.
-    - name: listservicerollouts
+    - name: google-cloud-endpoints-list-service-2
       description: Google Cloud Endpoints List service rollouts
       hints:
         readOnly: true
         destructive: false
         idempotent: true
-      call: google-cloud-endpoints.listservicerollouts
+      call: openapi-services.listservicerollouts
       with:
         serviceName: tools.serviceName
-      inputParameters:
-      - name: serviceName
-        type: string
-        description: serviceName
-        required: true
       outputParameters:
       - type: object
         mapping: $.
-    - name: createservicerollout
+    - name: google-cloud-endpoints-create-service-2
       description: Google Cloud Endpoints Create a service rollout
       hints:
         readOnly: false
         destructive: false
         idempotent: false
-      call: google-cloud-endpoints.createservicerollout
+      call: openapi-services.createservicerollout
       with:
         serviceName: tools.serviceName
-      inputParameters:
-      - name: serviceName
-        type: string
-        description: serviceName
-        required: true
+        body: tools.body
       outputParameters:
       - type: object
         mapping: $.
