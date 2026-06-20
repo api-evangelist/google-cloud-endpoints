@@ -6,7 +6,7 @@ description: >-
   (ESP) or ESPv2 to provide API management capabilities including authentication, monitoring, logging, and API key
   validation for APIs described using OpenAPI specifications. It supports APIs hosted on App Engine, GKE, Compute
   Engine, or any Docker-supported environment.
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/google-cloud-endpoints/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-19'
