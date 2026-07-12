@@ -42,6 +42,10 @@ apis:
       - Endpoints
       - Service Management
 common:
+  - type: VulnerabilityDisclosure
+    url: security/google-cloud-endpoints-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/google-cloud-endpoints-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/cloudendpoints
   - type: Portal
