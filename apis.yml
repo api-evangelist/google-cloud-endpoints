@@ -6,7 +6,19 @@ description: >-
   (ESP) or ESPv2 to provide API management capabilities including authentication, monitoring, logging, and API key
   validation for APIs described using OpenAPI specifications. It supports APIs hosted on App Engine, GKE, Compute
   Engine, or any Docker-supported environment.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/google-cloud-endpoints.png
 url: https://raw.githubusercontent.com/api-evangelist/google-cloud-endpoints/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-19'
@@ -20,28 +32,27 @@ tags:
   - Monitoring
   - Rate Limiting
 apis:
-  - name: Google Cloud Service Management API
-    description: >-
-      The Service Management API enables management of managed services used by Cloud Endpoints. It allows you to
-      create, configure, and deploy API configurations, manage service rollouts, and control access to your APIs.
-    humanURL: https://cloud.google.com/endpoints/docs
-    baseURL: https://servicemanagement.googleapis.com
-    properties:
-      - type: Documentation
-        url: https://cloud.google.com/endpoints/docs/reference/service-management/rest
-      - type: OpenAPI
-        url: openapi/openapi.yml
-      - type: Authentication
-        url: https://cloud.google.com/endpoints/docs/grpc/authenticating-users
-      - type: GettingStarted
-        url: https://cloud.google.com/endpoints/docs/openapi/get-started-cloud-run
-      - type: JSONSchema
-        url: json-schema/json-schema.yml
-    tags:
-      - API Management
-      - Endpoints
-      - Service Management
+- aid: google-cloud-endpoints:google-cloud-endpoints-services-api
+  name: Google Cloud Endpoints Services API
+  description: The Services API from Google Cloud Endpoints — 4 operation(s) for services.
+  humanURL: https://cloud.google.com/endpoints/docs
+  baseURL: https://servicemanagement.googleapis.com
+  tags:
+  - Services
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-endpoints-services-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/endpoints/docs/reference/service-management/rest
+  - type: Authentication
+    url: https://cloud.google.com/endpoints/docs/grpc/authenticating-users
+  - type: GettingStarted
+    url: https://cloud.google.com/endpoints/docs/openapi/get-started-cloud-run
+  - type: JSONSchema
+    url: json-schema/json-schema.yml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/google-cloud-endpoints/overview
   - type: AgenticAccess
     url: agentic-access/google-cloud-endpoints-agentic-access.yml
   - type: VulnerabilityDisclosure
