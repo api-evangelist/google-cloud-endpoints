@@ -1,0 +1,14 @@
+{
+  "provider": "google-cloud-endpoints",
+  "sources": [
+    "google-cloud-endpoints-services-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-cloud-endpoints-services-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
