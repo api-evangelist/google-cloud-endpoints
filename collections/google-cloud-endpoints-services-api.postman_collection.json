@@ -1,0 +1,816 @@
+{
+  "item": [
+    {
+      "id": "c0d75b0b-a158-4235-bc8f-1a9e50d6a645",
+      "name": "Services",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3531da79-6ea9-42ba-90a3-090280a23097",
+          "name": "Google Cloud Endpoints List managed services",
+          "request": {
+            "name": "Google Cloud Endpoints List managed services",
+            "description": {
+              "content": "Lists managed services for the authenticated project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "services"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "producerProjectId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be45468f-6214-43cf-9ff5-dd024995d5dc",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "producerProjectId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"services\": [\n    {\n      \"serviceName\": \"string\",\n      \"producerProjectId\": \"string\"\n    },\n    {\n      \"serviceName\": \"string\",\n      \"producerProjectId\": \"string\"\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34610a4a-d994-4d75-8eea-425046f79845",
+          "name": "Google Cloud Endpoints Create a managed service",
+          "request": {
+            "name": "Google Cloud Endpoints Create a managed service",
+            "description": {
+              "content": "Creates a new managed service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "services"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"serviceName\": \"<string>\",\n  \"producerProjectId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0508394d-0182-4622-a225-28e1d5f82e8c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"serviceName\": \"<string>\",\n  \"producerProjectId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"done\": false,\n  \"metadata\": {},\n  \"response\": {},\n  \"error\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2dcc4ae8-fae0-419a-b1d1-a298d47669c6",
+          "name": "Google Cloud Endpoints Get a managed service",
+          "request": {
+            "name": "Google Cloud Endpoints Get a managed service",
+            "description": {
+              "content": "Gets the configuration of a managed service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "services",
+                ":serviceName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serviceName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb4db3f0-6223-49b4-b506-07f1dc7f7016",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "services",
+                    ":serviceName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"serviceName\": \"string\",\n  \"producerProjectId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5edf917-c2e1-4c25-bde2-0bee0690a358",
+          "name": "Google Cloud Endpoints Delete a managed service",
+          "request": {
+            "name": "Google Cloud Endpoints Delete a managed service",
+            "description": {
+              "content": "Deletes a managed service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "services",
+                ":serviceName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serviceName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9141be48-033e-4be0-a30c-42c7ebcb7584",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "services",
+                    ":serviceName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"done\": false,\n  \"metadata\": {},\n  \"response\": {},\n  \"error\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c5aef9d-1ec6-46fd-9fe9-71c5634da4ac",
+          "name": "Google Cloud Endpoints List service configurations",
+          "request": {
+            "name": "Google Cloud Endpoints List service configurations",
+            "description": {
+              "content": "Lists the history of service configurations for a managed service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "services",
+                ":serviceName",
+                "configs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serviceName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3bede8bd-f4a0-428e-97e9-a5c54022d34e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "services",
+                    ":serviceName",
+                    "configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"serviceConfigs\": [\n    {\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"producerProjectId\": \"string\",\n      \"id\": \"string\",\n      \"apis\": [\n        {\n          \"name\": \"string\",\n          \"version\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"version\": \"string\"\n        }\n      ],\n      \"documentation\": {\n        \"summary\": \"string\"\n      },\n      \"quota\": {\n        \"limits\": [\n          {\n            \"name\": \"string\",\n            \"metric\": \"string\",\n            \"defaultLimit\": 9090\n          },\n          {\n            \"name\": \"string\",\n            \"metric\": \"string\",\n            \"defaultLimit\": 9578\n          }\n        ]\n      },\n      \"usage\": {\n        \"requirements\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    },\n    {\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"producerProjectId\": \"string\",\n      \"id\": \"string\",\n      \"apis\": [\n        {\n          \"name\": \"string\",\n          \"version\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"version\": \"string\"\n        }\n      ],\n      \"documentation\": {\n        \"summary\": \"string\"\n      },\n      \"quota\": {\n        \"limits\": [\n          {\n            \"name\": \"string\",\n            \"metric\": \"string\",\n            \"defaultLimit\": 5559\n          },\n          {\n            \"name\": \"string\",\n            \"metric\": \"string\",\n            \"defaultLimit\": 3701\n          }\n        ]\n      },\n      \"usage\": {\n        \"requirements\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffec0552-162b-4c8a-a65c-d173456bc9e3",
+          "name": "Google Cloud Endpoints Create a service configuration",
+          "request": {
+            "name": "Google Cloud Endpoints Create a service configuration",
+            "description": {
+              "content": "Creates a new service configuration for a managed service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "services",
+                ":serviceName",
+                "configs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serviceName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"title\": \"<string>\",\n  \"producerProjectId\": \"<string>\",\n  \"id\": \"<string>\",\n  \"apis\": [\n    {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    }\n  ],\n  \"documentation\": {\n    \"summary\": \"<string>\"\n  },\n  \"quota\": {\n    \"limits\": [\n      {\n        \"name\": \"<string>\",\n        \"metric\": \"<string>\",\n        \"defaultLimit\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"metric\": \"<string>\",\n        \"defaultLimit\": \"<integer>\"\n      }\n    ]\n  },\n  \"usage\": {\n    \"requirements\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8dc79c0d-9f0c-43f3-8ee4-f555373df202",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "services",
+                    ":serviceName",
+                    "configs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"title\": \"<string>\",\n  \"producerProjectId\": \"<string>\",\n  \"id\": \"<string>\",\n  \"apis\": [\n    {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\"\n    }\n  ],\n  \"documentation\": {\n    \"summary\": \"<string>\"\n  },\n  \"quota\": {\n    \"limits\": [\n      {\n        \"name\": \"<string>\",\n        \"metric\": \"<string>\",\n        \"defaultLimit\": \"<integer>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"metric\": \"<string>\",\n        \"defaultLimit\": \"<integer>\"\n      }\n    ]\n  },\n  \"usage\": {\n    \"requirements\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"title\": \"string\",\n  \"producerProjectId\": \"string\",\n  \"id\": \"string\",\n  \"apis\": [\n    {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"version\": \"string\"\n    }\n  ],\n  \"documentation\": {\n    \"summary\": \"string\"\n  },\n  \"quota\": {\n    \"limits\": [\n      {\n        \"name\": \"string\",\n        \"metric\": \"string\",\n        \"defaultLimit\": 3410\n      },\n      {\n        \"name\": \"string\",\n        \"metric\": \"string\",\n        \"defaultLimit\": 8145\n      }\n    ]\n  },\n  \"usage\": {\n    \"requirements\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe432585-a497-41d5-ba99-5a5b26ada192",
+          "name": "Google Cloud Endpoints List service rollouts",
+          "request": {
+            "name": "Google Cloud Endpoints List service rollouts",
+            "description": {
+              "content": "Lists rollout history for a managed service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "services",
+                ":serviceName",
+                "rollouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serviceName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e17bacf-5adb-4d45-bfbb-a9da564800ea",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "services",
+                    ":serviceName",
+                    "rollouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rollouts\": [\n    {\n      \"rolloutId\": \"string\",\n      \"createTime\": \"1958-08-21T06:19:00.521Z\",\n      \"createdBy\": \"string\",\n      \"status\": \"CANCELLED\",\n      \"serviceName\": \"string\",\n      \"trafficPercentStrategy\": {\n        \"percentages\": {\n          \"key_0\": 189.26656763581406\n        }\n      }\n    },\n    {\n      \"rolloutId\": \"string\",\n      \"createTime\": \"2010-12-04T17:16:55.767Z\",\n      \"createdBy\": \"string\",\n      \"status\": \"ROLLOUT_STATUS_UNSPECIFIED\",\n      \"serviceName\": \"string\",\n      \"trafficPercentStrategy\": {\n        \"percentages\": {\n          \"key_0\": 8169.06646601456,\n          \"key_1\": 429.7994625671242,\n          \"key_2\": 2260.4766331654578\n        }\n      }\n    }\n  ],\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3390665-7ac6-4d46-90fc-2cb0f104924e",
+          "name": "Google Cloud Endpoints Create a service rollout",
+          "request": {
+            "name": "Google Cloud Endpoints Create a service rollout",
+            "description": {
+              "content": "Creates a new service rollout for a managed service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "services",
+                ":serviceName",
+                "rollouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serviceName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rolloutId\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"createdBy\": \"<string>\",\n  \"status\": \"<string>\",\n  \"serviceName\": \"<string>\",\n  \"trafficPercentStrategy\": {\n    \"percentages\": {\n      \"key_0\": \"<number>\",\n      \"key_1\": \"<number>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3ca6a397-f73f-4a1e-9b76-84228891e989",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "services",
+                    ":serviceName",
+                    "rollouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"rolloutId\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"createdBy\": \"<string>\",\n  \"status\": \"<string>\",\n  \"serviceName\": \"<string>\",\n  \"trafficPercentStrategy\": {\n    \"percentages\": {\n      \"key_0\": \"<number>\",\n      \"key_1\": \"<number>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"done\": false,\n  \"metadata\": {},\n  \"response\": {},\n  \"error\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://servicemanagement.googleapis.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1e70d252-3984-4501-ba7a-7ee80b604981",
+    "name": "Google Cloud Endpoints Google Cloud Service Management Services API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Service Management API allows management of managed services used by Google Cloud Endpoints. It enables creating, configuring, and deploying API service configurations and managing service rollouts.\n\nContact Support:\n Name: Google Cloud",
+      "type": "text/plain"
+    }
+  }
+}

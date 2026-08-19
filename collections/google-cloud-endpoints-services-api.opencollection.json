@@ -1,0 +1,177 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Endpoints Google Cloud Service Management Services API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Endpoints List managed services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://servicemanagement.googleapis.com/v1/services",
+            "params": [
+              {
+                "name": "producerProjectId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageToken",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists managed services for the authenticated project."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Endpoints Create a managed service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://servicemanagement.googleapis.com/v1/services",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new managed service."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Endpoints Get a managed service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://servicemanagement.googleapis.com/v1/services/:serviceName",
+            "params": [
+              {
+                "name": "serviceName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets the configuration of a managed service."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Endpoints Delete a managed service",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://servicemanagement.googleapis.com/v1/services/:serviceName",
+            "params": [
+              {
+                "name": "serviceName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a managed service."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Endpoints List service configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://servicemanagement.googleapis.com/v1/services/:serviceName/configs",
+            "params": [
+              {
+                "name": "serviceName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists the history of service configurations for a managed service."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Endpoints Create a service configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://servicemanagement.googleapis.com/v1/services/:serviceName/configs",
+            "params": [
+              {
+                "name": "serviceName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new service configuration for a managed service."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Endpoints List service rollouts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://servicemanagement.googleapis.com/v1/services/:serviceName/rollouts",
+            "params": [
+              {
+                "name": "serviceName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists rollout history for a managed service."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Endpoints Create a service rollout",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://servicemanagement.googleapis.com/v1/services/:serviceName/rollouts",
+            "params": [
+              {
+                "name": "serviceName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new service rollout for a managed service."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
