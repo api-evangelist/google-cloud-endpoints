@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Google Cloud Endpoints Google Cloud Service Management Services API
   description: The Service Management API allows management of managed services used by Google Cloud Endpoints. It enables creating, configuring, and deploying API service configurations and managing service rollouts.
@@ -188,6 +188,51 @@ paths:
       - Services
 components:
   schemas:
+    ListServiceConfigsResponse:
+      type: object
+      properties:
+        serviceConfigs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceConfig'
+        nextPageToken:
+          type: string
+    ListServicesResponse:
+      type: object
+      properties:
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagedService'
+        nextPageToken:
+          type: string
+    Rollout:
+      type: object
+      properties:
+        rolloutId:
+          type: string
+        createTime:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+        status:
+          type: string
+          enum:
+          - ROLLOUT_STATUS_UNSPECIFIED
+          - IN_PROGRESS
+          - SUCCESS
+          - CANCELLED
+          - FAILED
+        serviceName:
+          type: string
+        trafficPercentStrategy:
+          type: object
+          properties:
+            percentages:
+              type: object
+              additionalProperties:
+                type: number
     ServiceConfig:
       type: object
       properties:
@@ -234,15 +279,15 @@ components:
               type: array
               items:
                 type: string
-    ManagedService:
+    ListServiceRolloutsResponse:
       type: object
       properties:
-        serviceName:
+        rollouts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rollout'
+        nextPageToken:
           type: string
-          description: The name of the service.
-        producerProjectId:
-          type: string
-          description: The Google Cloud project that owns the service.
     Operation:
       type: object
       properties:
@@ -256,57 +301,12 @@ components:
           type: object
         error:
           type: object
-    ListServiceConfigsResponse:
+    ManagedService:
       type: object
       properties:
-        serviceConfigs:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceConfig'
-        nextPageToken:
-          type: string
-    ListServiceRolloutsResponse:
-      type: object
-      properties:
-        rollouts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Rollout'
-        nextPageToken:
-          type: string
-    ListServicesResponse:
-      type: object
-      properties:
-        services:
-          type: array
-          items:
-            $ref: '#/components/schemas/ManagedService'
-        nextPageToken:
-          type: string
-    Rollout:
-      type: object
-      properties:
-        rolloutId:
-          type: string
-        createTime:
-          type: string
-          format: date-time
-        createdBy:
-          type: string
-        status:
-          type: string
-          enum:
-          - ROLLOUT_STATUS_UNSPECIFIED
-          - IN_PROGRESS
-          - SUCCESS
-          - CANCELLED
-          - FAILED
         serviceName:
           type: string
-        trafficPercentStrategy:
-          type: object
-          properties:
-            percentages:
-              type: object
-              additionalProperties:
-                type: number
+          description: The name of the service.
+        producerProjectId:
+          type: string
+          description: The Google Cloud project that owns the service.
