@@ -197,6 +197,46 @@ components:
             $ref: '#/components/schemas/ServiceConfig'
         nextPageToken:
           type: string
+    ListServiceRolloutsResponse:
+      type: object
+      properties:
+        rollouts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rollout'
+        nextPageToken:
+          type: string
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
+        metadata:
+          type: object
+        response:
+          type: object
+        error:
+          type: object
+    ListServicesResponse:
+      type: object
+      properties:
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagedService'
+        nextPageToken:
+          type: string
+    ManagedService:
+      type: object
+      properties:
+        serviceName:
+          type: string
+          description: The name of the service.
+        producerProjectId:
+          type: string
+          description: The Google Cloud project that owns the service.
     ServiceConfig:
       type: object
       properties:
@@ -243,46 +283,6 @@ components:
               type: array
               items:
                 type: string
-    ListServicesResponse:
-      type: object
-      properties:
-        services:
-          type: array
-          items:
-            $ref: '#/components/schemas/ManagedService'
-        nextPageToken:
-          type: string
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        done:
-          type: boolean
-        metadata:
-          type: object
-        response:
-          type: object
-        error:
-          type: object
-    ManagedService:
-      type: object
-      properties:
-        serviceName:
-          type: string
-          description: The name of the service.
-        producerProjectId:
-          type: string
-          description: The Google Cloud project that owns the service.
-    ListServiceRolloutsResponse:
-      type: object
-      properties:
-        rollouts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Rollout'
-        nextPageToken:
-          type: string
     Rollout:
       type: object
       properties:
