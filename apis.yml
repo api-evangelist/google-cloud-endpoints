@@ -63,6 +63,9 @@ apis:
   - type: JSONSchema
     url: json-schema/json-schema.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/google-cloud-endpoints-capability-edges.yml
+    name: Google Cloud Endpoints Business Capability Map
   - type: Website
     url: https://www.google.com/
   - type: PostmanWorkspace
