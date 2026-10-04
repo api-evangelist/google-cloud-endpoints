@@ -188,15 +188,28 @@ paths:
       - Services
 components:
   schemas:
-    ListServiceRolloutsResponse:
+    ListServiceConfigsResponse:
       type: object
       properties:
-        rollouts:
+        serviceConfigs:
           type: array
           items:
-            $ref: '#/components/schemas/Rollout'
+            $ref: '#/components/schemas/ServiceConfig'
         nextPageToken:
           type: string
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
+        metadata:
+          type: object
+        response:
+          type: object
+        error:
+          type: object
     ServiceConfig:
       type: object
       properties:
@@ -243,6 +256,24 @@ components:
               type: array
               items:
                 type: string
+    ListServicesResponse:
+      type: object
+      properties:
+        services:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagedService'
+        nextPageToken:
+          type: string
+    ListServiceRolloutsResponse:
+      type: object
+      properties:
+        rollouts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rollout'
+        nextPageToken:
+          type: string
     ManagedService:
       type: object
       properties:
@@ -252,15 +283,6 @@ components:
         producerProjectId:
           type: string
           description: The Google Cloud project that owns the service.
-    ListServiceConfigsResponse:
-      type: object
-      properties:
-        serviceConfigs:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceConfig'
-        nextPageToken:
-          type: string
     Rollout:
       type: object
       properties:
@@ -288,25 +310,3 @@ components:
               type: object
               additionalProperties:
                 type: number
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        done:
-          type: boolean
-        metadata:
-          type: object
-        response:
-          type: object
-        error:
-          type: object
-    ListServicesResponse:
-      type: object
-      properties:
-        services:
-          type: array
-          items:
-            $ref: '#/components/schemas/ManagedService'
-        nextPageToken:
-          type: string
