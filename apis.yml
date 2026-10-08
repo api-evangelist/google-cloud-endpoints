@@ -63,6 +63,12 @@ apis:
   - type: JSONSchema
     url: json-schema/json-schema.yml
 common:
+  - type: Plans
+    url: plans/google-cloud-endpoints-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/google-cloud-endpoints-rate-limits.yml
+  - type: FinOps
+    url: finops/google-cloud-endpoints-finops.yml
   - type: CapabilityMap
     url: capabilities/google-cloud-endpoints-capability-edges.yml
     name: Google Cloud Endpoints Business Capability Map
