@@ -188,28 +188,51 @@ paths:
       - Services
 components:
   schemas:
-    ListServiceConfigsResponse:
+    Rollout:
       type: object
       properties:
-        serviceConfigs:
+        rolloutId:
+          type: string
+        createTime:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+        status:
+          type: string
+          enum:
+          - ROLLOUT_STATUS_UNSPECIFIED
+          - IN_PROGRESS
+          - SUCCESS
+          - CANCELLED
+          - FAILED
+        serviceName:
+          type: string
+        trafficPercentStrategy:
+          type: object
+          properties:
+            percentages:
+              type: object
+              additionalProperties:
+                type: number
+    ManagedService:
+      type: object
+      properties:
+        serviceName:
+          type: string
+          description: The name of the service.
+        producerProjectId:
+          type: string
+          description: The Google Cloud project that owns the service.
+    ListServicesResponse:
+      type: object
+      properties:
+        services:
           type: array
           items:
-            $ref: '#/components/schemas/ServiceConfig'
+            $ref: '#/components/schemas/ManagedService'
         nextPageToken:
           type: string
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        done:
-          type: boolean
-        metadata:
-          type: object
-        response:
-          type: object
-        error:
-          type: object
     ServiceConfig:
       type: object
       properties:
@@ -256,15 +279,6 @@ components:
               type: array
               items:
                 type: string
-    ListServicesResponse:
-      type: object
-      properties:
-        services:
-          type: array
-          items:
-            $ref: '#/components/schemas/ManagedService'
-        nextPageToken:
-          type: string
     ListServiceRolloutsResponse:
       type: object
       properties:
@@ -274,39 +288,25 @@ components:
             $ref: '#/components/schemas/Rollout'
         nextPageToken:
           type: string
-    ManagedService:
+    Operation:
       type: object
       properties:
-        serviceName:
+        name:
           type: string
-          description: The name of the service.
-        producerProjectId:
-          type: string
-          description: The Google Cloud project that owns the service.
-    Rollout:
-      type: object
-      properties:
-        rolloutId:
-          type: string
-        createTime:
-          type: string
-          format: date-time
-        createdBy:
-          type: string
-        status:
-          type: string
-          enum:
-          - ROLLOUT_STATUS_UNSPECIFIED
-          - IN_PROGRESS
-          - SUCCESS
-          - CANCELLED
-          - FAILED
-        serviceName:
-          type: string
-        trafficPercentStrategy:
+        done:
+          type: boolean
+        metadata:
           type: object
-          properties:
-            percentages:
-              type: object
-              additionalProperties:
-                type: number
+        response:
+          type: object
+        error:
+          type: object
+    ListServiceConfigsResponse:
+      type: object
+      properties:
+        serviceConfigs:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceConfig'
+        nextPageToken:
+          type: string
